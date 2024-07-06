@@ -74,6 +74,24 @@ hr {
     outline: none;
 }
 
+.forgot-password-title {
+    font-size: 1.6rem;
+}
+
+.forgot-password {
+    padding-top: 20px;
+    display: flex;
+    justify-content: end;
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 600;
+    transition: all 1s ease;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
 .register-button {
     width: 100%;
     color: white;
@@ -83,7 +101,6 @@ hr {
     border-radius: 10px;
     margin: 1rem 0;
     background-color: var(--dark-color);
-    transition: all .5s ease;
 }
 
 .eye-toggle, .eye-toggle-confirm {

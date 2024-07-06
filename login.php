@@ -17,6 +17,8 @@
                     <input class="input" type="password" placeholder="Password" name="password">
                     <img class="eye-toggle" src="assets/eye-solid.svg" alt="">
                 </div>
+                <!-- Forgot Password -->
+                <a class="forgot-password" href="forgotPassword.php">Forgot Password?</a>
                 <!-- Button -->
                 <button class="register-button">LOGIN</button>
                 <p class="login">Not a member yet? <strong><a href="register.php">Register.</a></strong></p>
