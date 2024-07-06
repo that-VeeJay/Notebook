@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --dark-color: #222831
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    min-height: 200px;
+    padding: 1.5rem;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+}
+
+.card>h1 {
+    font-weight: 400;
+}
+
+hr {
+    width: 100%;
+    border: 0;
+    filter: opacity(40%);
+    border-top: 1px solid gray; 
+}
+
+.input-container{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.input-container i {
+    display: inline-block;
+    position: absolute;
+    top: 1.3rem;
+    color: gray;
+
+}
+
+.input-container .input {
+    width: 100%;
+    padding: .8rem;
+    margin: .3rem 0;
+    background-color: transparent;
+    padding-left: 1.5rem;
+    border: none;
+    border-bottom: 1px solid transparent;
+    transition: all 1s ease;
+}
+
+.input-container .input:hover {
+    border-bottom: 1px solid var(--dark-color);
+}
+
+.input-container .input:focus {
+    outline: none;
+}
+
+.register-button {
+    width: 100%;
+    color: white;
+    padding: .6rem;
+    font-size: 1rem;
+    letter-spacing: .2rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    background-color: var(--dark-color);
+    transition: all .5s ease;
+}
+
+.eye-toggle, .eye-toggle-confirm {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    width: 1.2rem;
+    filter: opacity(50%);
+}
+
+.register-button:hover {
+    background-color: #3a4049;
+}
+
+.login {
+    text-align: center;
+}
+
+.login a {
+    text-decoration: none;
+    color: var(--dark-color);
+}
+
+.login a:hover {
+    text-decoration:underline;
+}
