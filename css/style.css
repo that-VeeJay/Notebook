@@ -74,6 +74,10 @@ hr {
     outline: none;
 }
 
+.change-password-title {
+    font-size: 1.5rem;
+}
+
 .forgot-password-title {
     font-size: 1.6rem;
 }
