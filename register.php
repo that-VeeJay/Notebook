@@ -5,7 +5,8 @@
         <div class="card">
             <h1>REGISTER</h1>
             <hr>
-            <form action="#" method="">
+            <form action="/app/controllers/Users.controller.php" method="post">
+                <input type="hidden" name="type" method="post">
                 <!-- Username -->
                 <div class="input-container">
                     <img class="icon" src="assets/user-solid.svg" alt="">
@@ -29,7 +30,7 @@
                     <img class="eye-toggle-confirm" src="assets/eye-solid.svg" alt="">
                 </div>
                 <!-- Button -->
-                <button class="register-button">REGISTER</button>
+                <button type="submit" class="register-button">REGISTER</button>
                 <p class="login">Already a member? <strong><a href="login.php">Login.</a></strong></p>
             </form>
         </div>

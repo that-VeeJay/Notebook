@@ -1,13 +1,13 @@
 <?php
 
 $config  = parse_ini_file(__DIR__ . '/config.ini', true);
+
 class Database
 {
     public static $host;
     public static $dbname;
     public static $dbUsername;
     public static $dbPassword;
-
     public static function init()
     {
         global $config;
@@ -19,6 +19,7 @@ class Database
 
     public static function connect()
     {
+        self::init();
         try {
             $dsn = "mysql:host=" . self::$host . ";dbname=" . self::$dbname;
             $pdo = new PDO($dsn, self::$dbUsername, self::$dbPassword);
