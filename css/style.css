@@ -52,7 +52,14 @@ hr {
     position: absolute;
     top: 1.3rem;
     color: gray;
+}
 
+.input-container .icon {
+    width: 15px;
+    display: inline-block;
+    position: absolute;
+    top: 1.3rem;
+    filter: opacity(50%);
 }
 
 .input-container .input {

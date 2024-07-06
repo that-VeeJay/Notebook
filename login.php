@@ -8,12 +8,12 @@
             <form action="#" method="">
                 <!-- Email -->
                 <div class="input-container">
-                    <i class="fa-solid fa-envelope"></i>
+                    <img class="icon" src="assets/envelope-solid.svg" alt="">
                     <input class="input" type="email" placeholder="Email" name="email">
                 </div>
                 <!-- Password -->
                 <div class="input-container">
-                    <i class="fa-solid fa-key"></i>
+                    <img class="icon" src="assets/key-solid.svg" alt="">
                     <input class="input" type="password" placeholder="Password" name="password">
                     <img class="eye-toggle" src="assets/eye-solid.svg" alt="">
                 </div>

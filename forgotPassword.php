@@ -8,12 +8,12 @@
             <form action="#" method="">
                 <!-- Member ID -->
                 <div class="input-container">
-                    <i class="fa-solid fa-id-card-clip"></i>
+                    <img class="icon" src="assets/id-card-clip-solid.svg" alt="">
                     <input class="input" type="email" placeholder="Member ID" name="email">
                 </div>
                 <!-- Email -->
                 <div class="input-container">
-                    <i class="fa-solid fa-envelope"></i>
+                    <img class="icon" src="assets/envelope-solid.svg" alt="">
                     <input class="input" type="email" placeholder="Email" name="email">
                 </div>
                 <!-- Button -->
