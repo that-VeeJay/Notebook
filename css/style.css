@@ -146,8 +146,9 @@ hr {
     color: white;
     background-color: #f57e7e;
     border: 2px solid #C80036;
+    margin-top: 1rem;
     padding: 0.5rem;
-    margin: 5px 0;
+
 }
 
 p.error {

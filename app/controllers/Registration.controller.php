@@ -1,7 +1,8 @@
 <?php
 
-require_once(__DIR__ . '../../models/Registration.model.php');
-require_once(__DIR__ . '../../helpers/authentication.helper.php');
+require(__DIR__ . '/../../config/constants.php');
+require(BASE_PATH . 'app/models/Registration.model.php');
+require(BASE_PATH . 'app/helpers/authentication.helper.php');
 
 class Registration_controller
 {
@@ -11,7 +12,7 @@ class Registration_controller
 
     const MAX_FILE_SIZE = 500000; // 5MB
     const ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg'];
-    const AVATAR_UPLOAD_PATH = __DIR__ . '/../../assets/avatars/';
+    const AVATAR_UPLOAD_PATH = BASE_PATH . '/assets/avatars/';
     const PASSWORD_LENGTH = 3; // Change to 8 later on
 
     public function __construct()
@@ -107,14 +108,14 @@ class Registration_controller
                 $_SESSION['registration-data'] = $_POST;
 
                 flashMessage('errors', self::$errors[0]);
-                header("Location: /../../register.php");
+                header("Location: " . ROOT_URL . "register.php");
                 exit();
             } else {
                 $this->handleImageUpload($data);
                 $this->registrationModel->insertUserToDb($data, self::$avatarName);
 
                 flashMessage('success', 'You are now registered!');
-                header("Location: /../../register.php");
+                header("Location: " . ROOT_URL . "register.php");
                 exit();
             }
         }

@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../../config/Database.php');
+require(BASE_PATH . 'config/Database.php');
 
 class Login_model
 {
@@ -11,7 +11,7 @@ class Login_model
         $this->db = Database::connect();
     }
 
-    public function getHashedPassword($data): string
+    public function getHashedPassword($data)
     {
         $query = "SELECT password FROM users WHERE email = :email;";
         $stmt = $this->db->prepare($query);
@@ -19,6 +19,9 @@ class Login_model
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if ($result === false) {
+            return null;
+        }
         return $result['password'];
     }
 }

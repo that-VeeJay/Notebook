@@ -1,7 +1,7 @@
 <?php
-
-require_once(__DIR__ . '../../helpers/authentication.helper.php');
-require_once(__DIR__ . '/../models/Login.model.php');
+require(__DIR__ . '/../../config/constants.php');
+require(BASE_PATH . 'app/helpers/authentication.helper.php');
+require(BASE_PATH . 'app/models/Login.model.php');
 
 class Login_controller
 {
@@ -20,17 +20,20 @@ class Login_controller
         ];
 
         $hashedPassword = $this->loginModel->getHashedPassword($data);
-        $verifyPassword = password_verify($data['password'], $hashedPassword);
 
-        if ($verifyPassword) {
-            header("Location: ../views/user/homepage.php");
-            exit();
-        } else {
-            $_SESSION['login-data'] = $_POST;
-            flashMessage('errors', 'Invalid email or password.');
-            header("Location: ../../login.php");
-            exit();
+        if ($hashedPassword !== null) {
+            $verifyPassword = password_verify($data['password'], $hashedPassword);
+            if ($verifyPassword) {
+                // Redirect to homepage after success login
+                header("Location: " . ROOT_URL . "/app/views/user/homepage.php");
+                exit();
+            }
         }
+        //Handle invalid login
+        $_SESSION['login-data'] = $_POST;
+        flashMessage('errors', 'Invalid email or password.');
+        header("Location: " . ROOT_URL . "login.php");
+        exit();
     }
 }
 

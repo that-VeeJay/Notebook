@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '../../../config/Database.php');
+require(BASE_PATH . 'config/Database.php');
 
 class Registration_model
 {
