@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+        :root {
+            --dark-color: #222831;
+            --dark-color-hover: #413f3f;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Poppins, sans-serif;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .card {
+            width: 500px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .card h1 {
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        hr {
+            border: 0;
+            filter: opacity(40%);
+            border-top: 1px solid gray; 
+            margin-bottom: 1rem;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            width: calc(50% - 10px);
+            margin: 5px;
+            border-bottom: 1px solid transparent;
+            transition: all 1s ease;
+            position: relative;
+        }
+
+        .input-container:hover {
+            border-bottom: 1px solid var(--dark-color);
+        }
+
+        .icon {
+            width: .8rem;
+            filter: opacity(50%);
+        }
+
+        .input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .first-row, .second-row, .third-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: .3rem;
+        }
+
+        .third-row {
+            margin-bottom: 1rem;
+        }
+
+        .eye-toggle, .eye-toggle-confirm {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            width: 1rem;
+            filter: opacity(50%);
+        }
+
+        .file-upload {
+            width: 80%;
+            padding: 10px;
+            margin: 0 0 1rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #222831;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: .5rem;
+            transition: background .5s ease-in-out;
+        }
+
+        button:hover {
+            background-color: var(--dark-color-hover);
+        }
+
+        p>a {
+            color: var(--dark-color);
+            text-decoration: none;
+        }
+
+        p>a:hover {
+            text-decoration: underline;
+        }
+
+        input[type=file] {
+            width: 80%;
+        }
+
+        input[type=file]::file-selector-button {
+            margin-right: 20px;
+            border: none;
+            background: var(--dark-color);
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: background .5s ease-in-out;
+        }
+
+        input[type=file]::file-selector-button:hover {
+            background-color: var(--dark-color-hover);
+        }
+
+        @media (max-width: 500px) {
+            .wrapper {
+                padding: 2rem;
+            }
+
+            .input-container {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .wrapper {
+                padding: 2rem;
+            }
+
+            .input-container {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <h1>Registration</h1>
+            <hr>
+            <div class="first-row">
+                <div class="input-container">
+                    <img src="assets/user-solid.svg" class="icon" alt="icon">
+                    <input class="input" type="text" placeholder="First Name">
+                </div>
+                <div class="input-container">
+                    <img src="assets/user-solid.svg" class="icon" alt="icon">
+                    <input class="input" type="text" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="second-row">
+                <div class="input-container">
+                    <img src="assets/address-card-solid.svg" class="icon" alt="icon">
+                    <input class="input" type="text" placeholder="Username">
+                </div>
+                <div class="input-container">
+                    <img src="assets/envelope-solid.svg" class="icon" alt="icon">
+                    <input class="input" type="text" placeholder="Email">
+                </div>
+            </div>
+            <div class="third-row">
+                <div class="input-container">
+                    <img src="assets/key-solid.svg" class="icon" alt="icon">
+                    <input class="input" type="password" placeholder="Password">
+                    <img class="eye-toggle-confirm" src="assets/eye-solid.svg" alt="">
+                </div>
+                <div class="input-container">
+                    <img src="assets/key-solid.svg" class="icon" alt="icon">
+                    <input class="input" type="password" placeholder="Confirm Password">
+                    <img class="eye-toggle-confirm" src="assets/eye-solid.svg" alt="">
+                </div>
+            </div>
+            <input id="file-upload" class="file-upload" type="file" accept="image/*">
+            <button>SUBMIT</button>
+            <p>Already a member? <a href="login.php"><strong>Login.</strong></a></p>
+        </div>
+    </div>
+    <script>
+        // Password Visibility Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    let eyeIcons = document.querySelectorAll(".eye-toggle, .eye-toggle-confirm");
+    let passwordInputs = document.querySelectorAll("input[type='password']");
+
+    eyeIcons.forEach(function(eyeIcon, index) {
+        eyeIcon.addEventListener("click", function() {
+            if (passwordInputs[index].type === "password") {
+                passwordInputs[index].type = "text";
+                eyeIcon.src = "assets/eye-slash-solid.svg";
+            } else {
+                passwordInputs[index].type = "password";
+                eyeIcon.src = "assets/eye-solid.svg";
+            }
+        })
+    })
+})
+    </script>
+</body>
+</html>
