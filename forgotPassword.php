@@ -4,10 +4,14 @@ require(__DIR__ . '/config/constants.php');
 require(BASE_PATH . 'templates/head.php');
 require(BASE_PATH . 'app/helpers/authentication.helper.php');
 
-if (isset($_SESSION['logged-in'])) {
+if (isset($_SESSION['loggedIn-user'])) {
     header('Location: ' . ROOT_URL . 'app/views/user/homepage.php');
     exit();
+} elseif (isset($_SESSION['loggedIn-admin'])) {
+    header('Location: ' . ROOT_URL . 'app/views/admin/homepage.php');
+    exit();
 }
+
 
 ?>
 

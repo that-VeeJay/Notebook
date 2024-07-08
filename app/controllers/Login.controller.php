@@ -4,42 +4,60 @@ require(__DIR__ . '/../../config/constants.php');
 require(BASE_PATH . 'app/helpers/authentication.helper.php');
 require(BASE_PATH . 'app/models/Login.model.php');
 
-class Login_controller
+class LoginController
 {
     private $loginModel;
 
     public function __construct()
     {
-        $this->loginModel = new Login_model();
+        $this->loginModel = new LoginModel();
     }
 
-    public function login()
+    private static function sanitizeInput($data)
     {
-        $data = [
-            'email' => trim($_POST['email']),
-            'password' => trim($_POST['password']),
+        return [
+            'email' => trim($data['email']),
+            'password' => trim($data['password']),
         ];
+    }
 
-        $hashedPassword = $this->loginModel->getHashedPassword($data);
-
-        if ($hashedPassword !== null) {
-            $verifyPassword = password_verify($data['password'], $hashedPassword);
-            if ($verifyPassword) {
-                // Redirect to homepage after success login
-                $_SESSION['logged-in'] = true;
-                header("Location: " . ROOT_URL . "app/views/user/homepage.php");
-                exit();
-            }
+    private static function handleSuccessfulLogin($userType)
+    {
+        if ($userType == 'user') {
+            $_SESSION['loggedIn-user'] = true;
+            header("Location: " . ROOT_URL . "user/homepage.php");
+            exit();
+        } elseif ($userType === 'admin') {
+            $_SESSION['loggedIn-admin'] = true;
+            header("Location: " . ROOT_URL . "admin/homepage.php");
+            exit();
         }
-        //Handle invalid login
+    }
+
+    private static function handleInvalidLogin()
+    {
         $_SESSION['login-data'] = $_POST;
         flashMessage('errors', 'Invalid email or password.');
         header("Location: " . ROOT_URL . "login.php");
         exit();
     }
+
+    public function login()
+    {
+        $data = self::sanitizeInput($_POST);
+
+        $hashedPassword = $this->loginModel->getHashedPassword($data);
+
+        if ($hashedPassword !== null && password_verify($data['password'], $hashedPassword)) {
+            $userType = $this->loginModel->getUserType($data);
+            self::handleSuccessfulLogin($userType);
+        } else {
+            self::handleInvalidLogin();
+        }
+    }
 }
 
-$init = new Login_controller();
+$init = new LoginController();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['type']) {
