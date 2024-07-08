@@ -1,6 +1,6 @@
 <?php
-
 require(__DIR__ . '/../../config/constants.php');
+
 require(BASE_PATH . 'app/models/Registration.model.php');
 require(BASE_PATH . 'app/helpers/authentication.helper.php');
 

@@ -10,7 +10,7 @@ class PasswordRecovery_model
         $this->db = Database::connect();
     }
 
-    public function checkIfEmailExists($email)
+    public function checkIfEmailExists($email): bool
     {
         $query = "SELECT email FROM users WHERE email = :email;";
         $stmt = $this->db->prepare($query);
@@ -21,12 +21,12 @@ class PasswordRecovery_model
         return (empty($result)) ? true : false;
     }
 
-    public function updatePassword($new_password)
+    public function updatePassword($new_password): bool
     {
         $query = "UPDATE users SET password = :password WHERE email = :email;";
         $stmt = $this->db->prepare($query);
         $params = [
-            ':password' => $new_password,
+            ':password' => password_hash($new_password, PASSWORD_BCRYPT),
             ':email' => $_SESSION['recovery-email'],
         ];
         return $stmt->execute($params);

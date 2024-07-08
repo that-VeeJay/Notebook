@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+
 function flashMessage($type, $message = null)
 {
     if ($message) {

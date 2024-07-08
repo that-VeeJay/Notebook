@@ -1,5 +1,6 @@
 <?php
 require(__DIR__ . '/../../config/constants.php');
+
 require(BASE_PATH . 'app/helpers/authentication.helper.php');
 require(BASE_PATH . 'app/models/Login.model.php');
 
@@ -25,7 +26,8 @@ class Login_controller
             $verifyPassword = password_verify($data['password'], $hashedPassword);
             if ($verifyPassword) {
                 // Redirect to homepage after success login
-                header("Location: " . ROOT_URL . "/app/views/user/homepage.php");
+                $_SESSION['logged-in'] = true;
+                header("Location: " . ROOT_URL . "app/views/user/homepage.php");
                 exit();
             }
         }

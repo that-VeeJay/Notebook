@@ -1,6 +1,13 @@
 <?php
-include(__DIR__ . '/templates/head.php');
-require_once(__DIR__ . '/app/helpers/authentication.helper.php');
+require(__DIR__ . '/config/constants.php');
+
+require(BASE_PATH . 'templates/head.php');
+require(BASE_PATH . 'app/helpers/authentication.helper.php');
+
+if (isset($_SESSION['logged-in'])) {
+    header('Location: ' . ROOT_URL . 'app/views/user/homepage.php');
+    exit();
+}
 
 ?>
 
