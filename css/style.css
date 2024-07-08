@@ -148,6 +148,7 @@ hr {
     border: 2px solid #C80036;
     margin-top: 1rem;
     padding: 0.5rem;
+    width: 100%;
 
 }
 
@@ -165,6 +166,7 @@ p.error {
     border: 2px solid #508D4E;
     padding: 0.5rem;
     margin: 5px 0;
+    width: 100%;
 }
 
 p.success {

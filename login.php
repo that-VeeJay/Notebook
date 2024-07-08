@@ -11,6 +11,7 @@ require_once(__DIR__ . '/app/helpers/authentication.helper.php');
 
             <?php
             flashMessage('errors');
+            flashMessage('success');
             ?>
 
             <form action="./app/controllers/Login.controller.php" method="post">
